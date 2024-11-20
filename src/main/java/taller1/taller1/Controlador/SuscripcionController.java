@@ -17,6 +17,16 @@ public class SuscripcionController {
     @Autowired
     private SuscripcionService suscripcionService;
 
+    @GetMapping("/consultar")
+    public ResponseEntity<SuscripcionDTO> consultarSuscripcion(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
+        Optional<SuscripcionDTO> dtoOpt = suscripcionService.consultarSuscripcion(id_usuario, id_curso);
+        if (dtoOpt.isPresent()) {
+            return ResponseEntity.ok(dtoOpt.get());
+        } else {
+            return ResponseEntity.badRequest().body(null);
+        }
+    }
+
     @PostMapping("/suscribir")
     public ResponseEntity<SuscripcionDTO> suscribirUsuario(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
         SuscripcionDTO dto = suscripcionService.suscribirUsuario(id_usuario, id_curso);
@@ -32,15 +42,4 @@ public class SuscripcionController {
             return ResponseEntity.badRequest().body("No se encontró la suscripción");
         }
     }
-
-    @GetMapping("/consultar")
-    public ResponseEntity<SuscripcionDTO> consultarSuscripcion(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
-        Optional<SuscripcionDTO> dtoOpt = suscripcionService.consultarSuscripcion(id_usuario, id_curso);
-        if (dtoOpt.isPresent()) {
-            return ResponseEntity.ok(dtoOpt.get());
-        } else {
-            return ResponseEntity.badRequest().body(null);
-        }
-    }
-    
 }

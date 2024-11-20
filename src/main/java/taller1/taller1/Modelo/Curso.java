@@ -11,13 +11,13 @@ public class Curso {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_curso;
 
-    @Column(nullable = false, length = 50)
+    @Column(name = "nombre",nullable = false)
     private String nombre;
 
-    @Column(nullable = false, length = 255)
+    @Column(name = "descripcion",nullable = false)
     private String descripcion;
 
-    @Column(nullable = false, length = 1)
+    @Column(name = "estado",nullable = false)
     private String estado;
 
     @Column(name = "id_usuario", nullable = false)

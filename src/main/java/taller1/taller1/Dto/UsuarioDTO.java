@@ -1,38 +1,27 @@
-package taller1.taller1.Modelo;
+package taller1.taller1.Dto;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import jakarta.persistence.*;
+public class UsuarioDTO {
 
-@Entity
-@Table(name = "usuario")
-public class Usuario {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonProperty("id_usuario")
-    private Long id_usuario;
     
-    @Column(name = "nombre",nullable = false)
+    @NotBlank(message = "El tipo de usuario no puede estar vacío")
+    private Long id_usuario;
+
     @NotBlank(message = "El tipo de usuario no puede estar vacío")
     private String nombre;
 
-    @Column(name = "apellido",nullable = false)
     @NotBlank(message = "El tipo de usuario no puede estar vacío")
     private String apellido;
-
-    @Column(name = "email",nullable = false)
+    
     @NotBlank(message = "El tipo de usuario no puede estar vacío")
     private String email;
-
-    @Column(name = "contrasena",nullable = false)
+    
     @NotBlank(message = "El tipo de usuario no puede estar vacío")
     private String contrasena;
 
-    @Column(name = "tipo_usuario",nullable = false)
     @JsonProperty("tipo_usuario")
     @NotBlank(message = "El tipo de usuario no puede estar vacío")
     private String tipo_usuario;

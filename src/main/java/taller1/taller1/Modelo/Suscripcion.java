@@ -1,5 +1,7 @@
 package taller1.taller1.Modelo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -12,10 +14,12 @@ public class Suscripcion {
     private Long id_suscripcion;
 
     @Column(name = "id_usuario", nullable = false)
+    @JsonProperty("id_usuario")
     private Long id_usuario;
 
     @Column(name = "id_curso", nullable = false)
-    private Long id_curso;
+    @JsonProperty("id_curso")
+    private Long idCurso;
 
     // Getters y Setters
     public Long getId_suscripcion() {
@@ -35,11 +39,11 @@ public class Suscripcion {
     }
 
     public Long getId_curso() {
-        return id_curso;
+        return idCurso;
     }
 
     public void setId_curso(Long id_curso) {
-        this.id_curso = id_curso;
+        this.idCurso = id_curso;
     }
     
 }

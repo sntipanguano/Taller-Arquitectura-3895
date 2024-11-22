@@ -18,7 +18,7 @@ public class SuscripcionController {
     private SuscripcionService suscripcionService;
 
     @GetMapping("/consultar")
-    public ResponseEntity<SuscripcionDTO> consultarSuscripcion(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
+    public ResponseEntity<SuscripcionDTO> consultarSuscripcion(@RequestBody Long id_usuario, @RequestBody Long id_curso) {
         Optional<SuscripcionDTO> dtoOpt = suscripcionService.consultarSuscripcion(id_usuario, id_curso);
         if (dtoOpt.isPresent()) {
             return ResponseEntity.ok(dtoOpt.get());
@@ -28,13 +28,13 @@ public class SuscripcionController {
     }
 
     @PostMapping("/suscribir")
-    public ResponseEntity<SuscripcionDTO> suscribirUsuario(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
+    public ResponseEntity<SuscripcionDTO> suscribirUsuario(@RequestBody Long id_usuario, @RequestBody Long id_curso) {
         SuscripcionDTO dto = suscripcionService.suscribirUsuario(id_usuario, id_curso);
         return ResponseEntity.ok(dto);
     }
 
     @DeleteMapping("/cancelar")
-    public ResponseEntity<String> cancelarSuscripcion(@RequestParam Long id_usuario, @RequestParam Long id_curso) {
+    public ResponseEntity<String> cancelarSuscripcion(@RequestBody Long id_usuario, @RequestBody Long id_curso) {
         boolean resultado = suscripcionService.cancelarSuscripcion(id_usuario, id_curso);
         if (resultado) {
             return ResponseEntity.ok("Suscripción cancelada exitosamente");

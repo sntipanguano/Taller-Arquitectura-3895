@@ -47,8 +47,8 @@ public class CursoController {
     }
 
     @PatchMapping("/estado/{id}")
-    public ResponseEntity<String> cambiarEstado(@PathVariable Long id, @RequestParam String estado) {
-        if (cursoService.cambiarEstado(id, estado)) {
+    public ResponseEntity<String> cambiarEstado(@PathVariable Long id, @RequestBody CursoDTO dto) {
+        if (cursoService.cambiarEstado(id, dto)) {
             return ResponseEntity.ok("Estado cambiado exitosamente");
         }
         return ResponseEntity.badRequest().body("No se encontró el curso");

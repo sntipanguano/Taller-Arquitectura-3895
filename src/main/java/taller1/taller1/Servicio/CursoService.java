@@ -46,11 +46,11 @@ public class CursoService {
         return cursoRepository.findById(id).map(CursoMapper::toDTO);
     }
 
-    public boolean cambiarEstado(Long id, String estado) {
+    public boolean cambiarEstado(Long id, CursoDTO dto) {
         Optional<Curso> cursoOpt = cursoRepository.findById(id);
         if (cursoOpt.isPresent()) {
             Curso curso = cursoOpt.get();
-            curso.setEstado(estado);
+            curso.setEstado(dto.getEstado());
             cursoRepository.save(curso);
             return true;
         }

@@ -1,7 +1,6 @@
 package taller1.taller1.Modelo;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

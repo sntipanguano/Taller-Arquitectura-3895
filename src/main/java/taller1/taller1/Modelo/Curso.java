@@ -1,5 +1,4 @@
 package taller1.taller1.Modelo;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import jakarta.persistence.*;
 
